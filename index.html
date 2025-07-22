@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal AI Experts | Юридические эксперты в области ИИ</title>
+    <title>Huquqiy AI Ekspertlar | Sun'iy Intellekt va Raqamli Huquq</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -16,35 +16,31 @@
                         secondary: '#2c5282',
                         accent: '#e53e3e',
                         gold: '#d4af37',
-                        lightbg: '#f0f4f8'
+                        lightbg: '#f0f4f8',
+                        neural: '#6a5acd'
                     },
                     fontFamily: {
                         heading: ['Playfair Display', 'serif'],
                         body: ['Poppins', 'sans-serif']
                     },
                     animation: {
-                        'scale-in': 'scaleIn 0.5s ease-out forwards',
-                        'float': 'float 3s ease-in-out infinite',
-                        'fade-in': 'fadeIn 1s ease-out forwards',
-                        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'bounce-slow': 'bounceSlow 3s infinite'
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'neural-pulse': 'neuralPulse 4s linear infinite',
+                        'circuit': 'circuit 20s linear infinite'
                     },
                     keyframes: {
-                        scaleIn: {
-                            '0%': { transform: 'scale(0.8)', opacity: '0' },
-                            '100%': { transform: 'scale(1)', opacity: '1' }
-                        },
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-15px)' }
+                            '50%': { transform: 'translateY(-20px)' }
                         },
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' }
+                        neuralPulse: {
+                            '0%': { 'stroke-dashoffset': '1000' },
+                            '100%': { 'stroke-dashoffset': '0' }
                         },
-                        bounceSlow: {
-                            '0%, 100%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)' },
-                            '50%': { transform: 'translateY(-25%)', animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)' }
+                        circuit: {
+                            '0%': { 'stroke-dashoffset': '1000' },
+                            '100%': { 'stroke-dashoffset': '0' }
                         }
                     }
                 }
@@ -53,19 +49,52 @@
     </script>
     <style type="text/css">
         body {
-            background-color: #f9fafb;
+            background-color: #0a1120;
+            color: #e0e7ff;
             overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
         }
         
         .hero-bg {
-            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            background: radial-gradient(circle at top right, #1a365d 0%, #0a1120 60%);
+            position: relative;
+            overflow: hidden;
         }
         
-        .section-divider {
-            position: relative;
-            height: 100px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%231a365d' fill-opacity='1' d='M0,128L48,138.7C96,149,192,171,288,181.3C384,192,480,192,576,170.7C672,149,768,107,864,112C960,117,1056,171,1152,181.3C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat center bottom;
-            background-size: cover;
+        .neural-network {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .neural-path {
+            stroke: #6a5acd;
+            stroke-width: 1;
+            fill: none;
+            stroke-dasharray: 10, 5;
+            animation: neuralPulse 20s linear infinite;
+        }
+        
+        .circuit-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .circuit-path {
+            stroke: #d4af37;
+            stroke-width: 1;
+            fill: none;
+            stroke-dasharray: 10, 5;
+            animation: circuit 60s linear infinite;
         }
         
         .justice-icon {
@@ -77,181 +106,162 @@
         }
         
         .ai-card {
-            transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
+            transition: all 0.4s ease;
+            background: rgba(26, 54, 93, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(44, 82, 130, 0.5);
             overflow: hidden;
+            position: relative;
+            z-index: 2;
         }
         
         .ai-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: #2c5282;
+            box-shadow: 0 10px 30px rgba(106, 90, 205, 0.3);
+            border-color: #6a5acd;
         }
         
-        .pattern-bg {
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232c5282' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        .neural-border {
+            position: relative;
+            overflow: hidden;
         }
         
-        .uz-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' stroke='%231a365d' stroke-width='2' fill='none'/%3E%3Cpath d='M20,50 Q50,20 80,50 Q50,80 20,50' stroke='%23d4af37' stroke-width='2' fill='none'/%3E%3C/svg%3E");
-            background-size: 150px;
-            opacity: 0.1;
+        .neural-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #6a5acd, #2c5282, #6a5acd);
+            opacity: 0.5;
+            z-index: -1;
         }
         
-        .bg-uz {
-            background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #d4af37 100%);
+        .neural-border::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: calc(100% - 4px);
+            height: calc(100% - 4px);
+            background: #0a1120;
+            z-index: -1;
         }
         
-        .ai-chatbot {
-            transition: all 0.4s ease;
-            transform-origin: bottom right;
+        .hologram-effect {
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.7) 0%, rgba(42, 67, 101, 0.5) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(106, 90, 205, 0.3);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
         }
         
-        .ai-chatbot.hidden {
-            transform: scale(0);
-            opacity: 0;
+        .judge-ai {
+            background: linear-gradient(45deg, #1a365d, #2c5282);
+            border: 2px solid #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
         }
         
-        .chat-message {
-            max-width: 80%;
-            animation: fadeIn 0.3s ease-out;
+        .pulse {
+            animation: pulse 3s infinite;
         }
         
-        .ai-response {
-            animation: slideIn 0.5s ease-out;
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #d4af37;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
         }
         
-        @keyframes slideIn {
-            from {
-                transform: translateX(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
         }
         
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #d4af37; }
         }
         
-        .rotate {
-            animation: rotate 10s linear infinite;
+        .neuron {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #6a5acd;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #6a5acd;
+            z-index: 1;
         }
         
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+        .ai-judgment {
+            border-left: 4px solid #d4af37;
+            background: rgba(26, 54, 93, 0.4);
         }
         
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Mobile optimizations */
         @media (max-width: 768px) {
-            .section-divider {
-                height: 50px;
+            .flex-col-mobile {
+                flex-direction: column;
             }
-            
-            .hero-bg .container {
-                padding-top: 40px;
-                padding-bottom: 40px;
+            .text-center-mobile {
+                text-align: center;
             }
-            
-            .justice-icon {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .ai-chatbot {
-                width: 90%;
-                max-width: 90%;
-                left: 5%;
+            .px-mobile {
+                padding-left: 1rem;
+                padding-right: 1rem;
             }
         }
     </style>
 </head>
-<body class="font-body text-gray-800">
+<body>
+    <!-- Neural Network Background -->
+    <svg class="neural-network" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+        <!-- Neural network paths will be generated dynamically -->
+    </svg>
+    
+    <!-- Circuit Background -->
+    <svg class="circuit-bg" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+        <!-- Circuit paths will be generated dynamically -->
+    </svg>
+
     <!-- Header -->
     <header class="hero-bg text-white relative overflow-hidden">
-        <!-- Animated Justice Scales -->
-        <div class="absolute top-20 right-10 justice-icon floating opacity-30">
-            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 21h12"></path>
-                <path d="M6 3h12"></path>
-                <path d="M12 3v18"></path>
-                <circle cx="9" cy="9" r="3" fill="#d4af37"></circle>
-                <circle cx="15" cy="15" r="3" fill="#d4af37"></circle>
-                <line x1="9" y1="9" x2="15" y2="15"></line>
-            </svg>
-        </div>
-        
-        <div class="absolute top-1/4 left-10 justice-icon floating opacity-30" style="animation-delay: 1.5s;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 21h12"></path>
-                <path d="M6 3h12"></path>
-                <path d="M12 3v18"></path>
-                <circle cx="9" cy="9" r="3" fill="#d4af37"></circle>
-                <circle cx="15" cy="15" r="3" fill="#d4af37"></circle>
-                <line x1="9" y1="9" x2="15" y2="15"></line>
-            </svg>
-        </div>
-        
-        <!-- Rotating gears -->
-        <div class="absolute top-1/3 left-1/4 opacity-10 rotate">
-            <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 6v6l4 2"></path>
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 12l4.5 4.5M15 9l-6 6"></path>
-            </svg>
-        </div>
-        
-        <div class="absolute bottom-1/4 right-1/3 opacity-10 rotate" style="animation-duration: 15s;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 6v6l4 2"></path>
-                <path d="M12 18v-6l-4-2"></path>
-            </svg>
-        </div>
-        
         <div class="container mx-auto px-6 py-16 relative z-10">
             <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0 animate-on-scroll">
+                <div class="md:w-1/2 mb-10 md:mb-0">
                     <h1 class="text-4xl md:text-6xl font-heading font-bold leading-tight mb-4">
-                        Юридические эксперты в области <span class="text-accent">Искусственного Интеллекта</span>
+                        <span class="text-gold">Huquqiy AI</span> Ekspertlar
                     </h1>
-                    <p class="text-xl mb-8 text-blue-100">
-                        Инновационные решения на стыке права и технологий для Узбекистана
-                    </p>
+                    <div class="typewriter text-xl mb-8 text-blue-200">
+                        Sun'iy intellekt va raqamli huquq sohasidagi yetakchi mutaxassislar
+                    </div>
                     <div class="flex flex-wrap gap-4">
                         <button class="bg-accent hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
-                            Связаться с нами
+                            Bog'lanish
                         </button>
                         <button class="bg-transparent border-2 border-gold text-gold hover:bg-gold hover:text-white font-bold py-3 px-6 rounded-lg transition duration-300">
-                            Наши исследования
+                            Tadqiqotlar
                         </button>
                     </div>
                 </div>
-                <div class="md:w-1/2 flex justify-center animate-on-scroll" style="transition-delay: 0.2s">
+                <div class="md:w-1/2 flex justify-center">
                     <div class="relative">
-                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-xl p-8 shadow-2xl border border-white border-opacity-30">
-                            <div class="bg-gray-200 border-2 border-dashed rounded-xl w-64 h-64 flex items-center justify-center text-gray-500">
-                                <i class="fas fa-user-tie text-6xl text-gray-400"></i>
+                        <div class="hologram-effect rounded-2xl p-8 shadow-2xl border border-gold border-opacity-30">
+                            <div class="bg-gray-800 rounded-xl p-6 w-80 h-80 flex items-center justify-center">
+                                <div class="text-center">
+                                    <i class="fas fa-balance-scale text-6xl text-gold mb-4"></i>
+                                    <h3 class="text-2xl font-bold text-gold">AI Sud</h3>
+                                    <p class="text-blue-200">Raqamli adolat tizimi</p>
+                                </div>
                             </div>
                             <div class="absolute -bottom-6 -right-6 bg-primary p-4 rounded-full">
-                                <i class="fas fa-robot text-3xl text-accent"></i>
+                                <i class="fas fa-brain text-3xl text-accent"></i>
                             </div>
                             <div class="absolute -top-6 -left-6 bg-gold p-4 rounded-full">
-                                <i class="fas fa-balance-scale text-3xl text-white"></i>
+                                <i class="fas fa-gavel text-3xl text-white"></i>
                             </div>
                         </div>
                     </div>
@@ -260,53 +270,163 @@
         </div>
     </header>
 
-    <!-- Uzbekistan Justice Symbol -->
-    <div class="section-divider"></div>
+    <!-- AI Judge Section -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-gold mb-4">
+                    Sun'iy Intellekt Sudi
+                </h2>
+                <div class="w-24 h-1 bg-accent mx-auto"></div>
+                <p class="text-xl text-blue-200 mt-6 max-w-3xl mx-auto">
+                    Kelajakning adolat tizimi - AI asosidagi yagona raqamli sud tizimi
+                </p>
+            </div>
+            
+            <div class="judge-ai rounded-2xl p-8 max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="md:col-span-1 flex flex-col items-center">
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-48 h-48 flex items-center justify-center mb-6">
+                            <i class="fas fa-robot text-6xl text-gray-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gold">AI Sudya</h3>
+                        <p class="text-center text-blue-200 mt-2">Huquqiy baholarni AI asosida amalga oshiradi</p>
+                        
+                        <div class="mt-8 w-full">
+                            <div class="bg-gray-800 rounded-lg p-4 mb-4">
+                                <h4 class="font-bold text-gold">Statistika</h4>
+                                <div class="mt-3 space-y-2">
+                                    <div class="flex justify-between">
+                                        <span>Aniqlik darajasi:</span>
+                                        <span class="text-accent">97.3%</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Tahlil qilingan ishlar:</span>
+                                        <span class="text-accent">24,562</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Vaqt tejashi:</span>
+                                        <span class="text-accent">68%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:col-span-2">
+                        <div class="bg-gray-900 rounded-xl p-6 h-full">
+                            <h3 class="text-xl font-bold text-gold mb-4">Huquqiy Holatni Tahlil Qiling</h3>
+                            
+                            <div class="mb-6">
+                                <label class="block text-blue-200 mb-2">Holat tavsifi</label>
+                                <textarea rows="4" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold" placeholder="Huquqiy holatingizni tavsiflang..."></textarea>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                                <div>
+                                    <label class="block text-blue-200 mb-2">Huquq sohasi</label>
+                                    <select class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
+                                        <option>Fuqarolik huquqi</option>
+                                        <option>Jinoyat huquqi</option>
+                                        <option>Mehnat huquqi</option>
+                                        <option>Iqtisodiy huquq</option>
+                                        <option>Raqamli huquq</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-blue-200 mb-2">Qiyinlik darajasi</label>
+                                    <select class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
+                                        <option>Oddiy</option>
+                                        <option>O'rtacha</option>
+                                        <option>Murakkab</option>
+                                        <option>Juda murakkab</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <button class="w-full bg-gold hover:bg-yellow-600 text-gray-900 font-bold py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center">
+                                <i class="fas fa-gavel mr-2"></i> AI Tahlilini Oling
+                            </button>
+                            
+                            <div class="mt-8">
+                                <h4 class="font-bold text-gold mb-3">AI Hukmi:</h4>
+                                <div class="ai-judgment p-4 rounded-lg bg-gray-800">
+                                    <p class="text-blue-200">Tahlil qilish uchun holatni kiriting. AI sudya sizning huquqiy holatingizni O'zbekiston qonunchiligi asosida tahlil qilib, ehtimoliy natijalar haqida baho beradi.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+                <div class="ai-card rounded-xl p-6">
+                    <div class="text-gold text-4xl mb-4">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Tezkor Tahlil</h3>
+                    <p class="text-blue-200">Sun'iy intellekt texnologiyasi yordamida huquqiy holatlarni tezkor tahlil qilish</p>
+                </div>
+                
+                <div class="ai-card rounded-xl p-6">
+                    <div class="text-gold text-4xl mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Statistik Aniqlik</h3>
+                    <p class="text-blue-200">24 000 dan ortiq huquqiy ishlar bazasi asosida aniq baholash</p>
+                </div>
+                
+                <div class="ai-card rounded-xl p-6">
+                    <div class="text-gold text-4xl mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Xavfsizlik</h3>
+                    <p class="text-blue-200">Ma'lumotlaringizning maxfiyligi va xavfsizligi kafolatlangan</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- About Section -->
-    <section class="py-20 pattern-bg">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
-                    О наших экспертах
+    <!-- Lawyers Section -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-gold mb-4">
+                    Mutaxassislarimiz
                 </h2>
                 <div class="w-24 h-1 bg-accent mx-auto"></div>
             </div>
             
             <div class="flex flex-col md:flex-row gap-10 justify-center">
                 <!-- Lawyer 1 -->
-                <div class="ai-card bg-white rounded-2xl shadow-xl p-8 max-w-md w-full transform transition-all duration-500 hover:shadow-2xl animate-on-scroll">
+                <div class="ai-card rounded-2xl shadow-xl p-8 max-w-md w-full">
                     <div class="flex flex-col items-center mb-6">
                         <div class="bg-gray-200 border-2 border-dashed rounded-full w-32 h-32 mb-4 flex items-center justify-center">
                             <i class="fas fa-user text-5xl text-gray-400"></i>
                         </div>
-                        <h3 class="text-2xl font-heading font-bold text-primary">To‘xtamirzaev Shoxjaxon Bahodirjon o‘g‘li</h3>
-                        <p class="text-secondary font-medium">Юридический специалист, независимый исследователь</p>
+                        <h3 class="text-2xl font-heading font-bold text-gold">To‘xtamirzaev Shoxjaxon Bahodirjon o‘g‘li</h3>
+                        <p class="text-secondary font-medium">Huquqiy mutaxassis, mustaqil tadqiqotchi</p>
                     </div>
                     
                     <div class="mb-6">
-                        <p class="text-gray-600 mb-4">
-                            Специализируется на исследованиях в области искусственного интеллекта, цифрового права, защиты персональных данных, института гражданско-правовой дееспособности и ответственности.
-                        </p>
-                        <p class="text-gray-600">
-                            Имеет практический опыт в изучении ИКТ-контрактов, электронного документооборота и юридических последствий технологических рисков. Участвовал в разработке законопроекта "Об искусственном интеллекте".
+                        <p class="text-blue-200 mb-4">
+                            Sun'iy intellekt, raqamli huquq, shaxsiy ma'lumotlarni himoya qilish, fuqarolik huquqida muomala layoqati va javobgarlik instituti bo'yicha chuqur ilmiy izlanishlar olib boradi.
                         </p>
                     </div>
                     
                     <div class="mb-6">
-                        <h4 class="text-lg font-bold text-primary mb-3">Научные направления:</h4>
+                        <h4 class="text-lg font-bold text-gold mb-3">Ilmiy yo‘nalishlari:</h4>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-lightbg text-secondary px-3 py-1 rounded-full text-sm">Цифровое право</span>
-                            <span class="bg-lightbg text-secondary px-3 py-1 rounded-full text-sm">Международное право</span>
-                            <span class="bg-lightbg text-secondary px-3 py-1 rounded-full text-sm">Правовой статус ИИ</span>
-                            <span class="bg-lightbg text-secondary px-3 py-1 rounded-full text-sm">Электронные контракты</span>
-                            <span class="bg-lightbg text-secondary px-3 py-1 rounded-full text-sm">Защита персональных данных</span>
+                            <span class="bg-gray-800 text-blue-200 px-3 py-1 rounded-full text-sm">Raqamli huquq</span>
+                            <span class="bg-gray-800 text-blue-200 px-3 py-1 rounded-full text-sm">Xalqaro huquq</span>
+                            <span class="bg-gray-800 text-blue-200 px-3 py-1 rounded-full text-sm">Sun'iy intellekt</span>
+                            <span class="bg-gray-800 text-blue-200 px-3 py-1 rounded-full text-sm">Elektron shartnomalar</span>
                         </div>
                     </div>
                     
                     <div>
-                        <h4 class="text-lg font-bold text-primary mb-3">Контакты:</h4>
-                        <ul class="space-y-2">
+                        <h4 class="text-lg font-bold text-gold mb-3">Aloqa:</h4>
+                        <ul class="space-y-2 text-blue-200">
                             <li class="flex items-center">
                                 <i class="fas fa-envelope text-accent mr-3"></i>
                                 <span>sh.tuhtamirzaev@gmail.com</span>
@@ -315,47 +435,39 @@
                                 <i class="fas fa-phone text-accent mr-3"></i>
                                 <span>+998 (97) 861-16-26</span>
                             </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-map-marker-alt text-accent mr-3"></i>
-                                <span>Наманганская область, Давлатабадский район</span>
-                            </li>
                         </ul>
                     </div>
                 </div>
                 
                 <!-- Lawyer 2 -->
-                <div class="ai-card bg-white rounded-2xl shadow-xl p-8 max-w-md w-full transform transition-all duration-500 hover:shadow-2xl animate-on-scroll" style="transition-delay: 0.2s">
+                <div class="ai-card rounded-2xl shadow-xl p-8 max-w-md w-full">
                     <div class="flex flex-col items-center mb-6">
                         <div class="bg-gray-200 border-2 border-dashed rounded-full w-32 h-32 mb-4 flex items-center justify-center">
                             <i class="fas fa-user text-5xl text-gray-400"></i>
                         </div>
-                        <h3 class="text-2xl font-heading font-bold text-primary">Nematjonov Iskandar</h3>
-                        <p class="text-secondary font-medium">Опытный исследователь и практик в области юридических наук</p>
+                        <h3 class="text-2xl font-heading font-bold text-gold">Nematjonov Iskandar</h3>
+                        <p class="text-secondary font-medium">Huquqiy fanlar bo'yicha tajribali tadqiqotchi</p>
                     </div>
                     
                     <div class="mb-6">
-                        <p class="text-gray-600 mb-4">
-                            Известен научными работами в области уголовного права, кибербезопасности, антимонопольного регулирования, защиты персональных данных и современной правовой модернизации.
-                        </p>
-                        <p class="text-gray-600">
-                            Внес вклад в качестве правового аналитика в ряд крупных проектов государственного и негосударственного сектора. Активно изучает точки пересечения технологий ИИ и уголовного права.
+                        <p class="text-blue-200 mb-4">
+                            Jinoyat huquqi, kibermakon xavfsizligi, monopoliyaga qarshi kurash, shaxsiy ma'lumotlar va zamonaviy huquqiy modernizatsiya yo‘nalishlarida ilmiy ishlari bilan tanilgan.
                         </p>
                     </div>
                     
                     <div class="mb-6">
-                        <h4 class="text-lg font-bold text-primary mb-3">Научные направления:</h4>
+                        <h4 class="text-lg font-bold text-gold mb-3">Ilmiy yo‘nalishlari:</h4>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-lightbg text-secondary px-3 py-1 rounded-full text-sm">Уголовное право</span>
-                            <span class="bg-lightbg text-secondary px-3 py-1 rounded-full text-sm">Цифровая безопасность</span>
-                            <span class="bg-lightbg text-secondary px-3 py-1 rounded-full text-sm">Защита персональных данных</span>
-                            <span class="bg-lightbg text-secondary px-3 py-1 rounded-full text-sm">ИИ и правовая ответственность</span>
-                            <span class="bg-lightbg text-secondary px-3 py-1 rounded-full text-sm">Правовые реформы</span>
+                            <span class="bg-gray-800 text-blue-200 px-3 py-1 rounded-full text-sm">Jinoyat huquqi</span>
+                            <span class="bg-gray-800 text-blue-200 px-3 py-1 rounded-full text-sm">Raqamli xavfsizlik</span>
+                            <span class="bg-gray-800 text-blue-200 px-3 py-1 rounded-full text-sm">Shaxsiy ma'lumotlar</span>
+                            <span class="bg-gray-800 text-blue-200 px-3 py-1 rounded-full text-sm">Huquqiy islohotlar</span>
                         </div>
                     </div>
                     
                     <div>
-                        <h4 class="text-lg font-bold text-primary mb-3">Контакты:</h4>
-                        <ul class="space-y-2">
+                        <h4 class="text-lg font-bold text-gold mb-3">Aloqa:</h4>
+                        <ul class="space-y-2 text-blue-200">
                             <li class="flex items-center">
                                 <i class="fas fa-envelope text-accent mr-3"></i>
                                 <span>i.nematjonov@legalresearch.uz</span>
@@ -363,10 +475,6 @@
                             <li class="flex items-center">
                                 <i class="fas fa-phone text-accent mr-3"></i>
                                 <span>+998 (91) 234-56-78</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-map-marker-alt text-accent mr-3"></i>
-                                <span>Наманганская область, Норинский район</span>
                             </li>
                         </ul>
                     </div>
@@ -376,218 +484,61 @@
     </section>
 
     <!-- Expertise Section -->
-    <section class="py-20 bg-lightbg relative uz-pattern">
-        <div class="absolute inset-0 bg-gradient-to-r from-white to-transparent opacity-80"></div>
-        <div class="container mx-auto px-6 relative">
-            <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
-                    Специализации и экспертиза
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-gold mb-4">
+                    Bizning Ekspertizalar
                 </h2>
                 <div class="w-24 h-1 bg-accent mx-auto"></div>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-primary transform transition-transform duration-300 hover:-translate-y-2 animate-on-scroll">
-                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-laptop-code text-2xl text-white"></i>
+                <div class="ai-card rounded-xl p-6 text-center">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-robot text-3xl text-gold"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">Цифровое право</h3>
-                    <p class="text-gray-600">Правовые аспекты цифровой трансформации, электронного документооборота и цифровых контрактов.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Sun'iy Intellekt Huquqi</h3>
+                    <p class="text-blue-200">AI texnologiyalarining huquqiy jihatlari va tartibga solinishi</p>
                 </div>
                 
-                <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-secondary transform transition-transform duration-300 hover:-translate-y-2 animate-on-scroll" style="transition-delay: 0.1s">
-                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-robot text-2xl text-white"></i>
+                <div class="ai-card rounded-xl p-6 text-center">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-3xl text-gold"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">Искусственный интеллект</h3>
-                    <p class="text-gray-600">Правовые аспекты разработки и внедрения ИИ, вопросы ответственности и регулирования.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Ma'lumotlarni Himoya Qilish</h3>
+                    <p class="text-blue-200">Shaxsiy ma'lumotlarni himoya qilish va xavfsizlik</p>
                 </div>
                 
-                <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-accent transform transition-transform duration-300 hover:-translate-y-2 animate-on-scroll" style="transition-delay: 0.2s">
-                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-shield-alt text-2xl text-white"></i>
+                <div class="ai-card rounded-xl p-6 text-center">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-file-contract text-3xl text-gold"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">Защита данных</h3>
-                    <p class="text-gray-600">Соответствие требованиям законодательства о защите персональных данных и информационной безопасности.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Raqamli Shartnomalar</h3>
+                    <p class="text-blue-200">Elektron shartnomalar va ularning huquqiy kuchliligi</p>
                 </div>
                 
-                <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-gold transform transition-transform duration-300 hover:-translate-y-2 animate-on-scroll" style="transition-delay: 0.3s">
-                    <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-gavel text-2xl text-white"></i>
+                <div class="ai-card rounded-xl p-6 text-center">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-laptop-code text-3xl text-gold"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">Правовые реформы</h3>
-                    <p class="text-gray-600">Модернизация законодательства в соответствии с технологическими вызовами современности.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Uzbekistan Legal System -->
-    <section class="py-20 bg-uz text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10 uz-pattern"></div>
-        <div class="container mx-auto px-6 relative">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0 animate-on-scroll">
-                    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-6">
-                        Правовая система <br>Узбекистана в цифровую эпоху
-                    </h2>
-                    <p class="text-xl mb-8 text-blue-100">
-                        Наши эксперты активно участвуют в развитии законодательной базы Республики Узбекистан в сфере высоких технологий и искусственного интеллекта.
-                    </p>
-                    
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="bg-white bg-opacity-10 p-4 rounded-xl backdrop-blur-sm animate-on-scroll" style="transition-delay: 0.1s">
-                            <i class="fas fa-file-contract text-3xl text-gold mb-3"></i>
-                            <h3 class="font-bold text-lg mb-2">Разработка законопроектов</h3>
-                            <p class="text-blue-100 text-sm">Участие в создании законодательных инициатив</p>
-                        </div>
-                        <div class="bg-white bg-opacity-10 p-4 rounded-xl backdrop-blur-sm animate-on-scroll" style="transition-delay: 0.2s">
-                            <i class="fas fa-chart-line text-3xl text-gold mb-3"></i>
-                            <h3 class="font-bold text-lg mb-2">Правовой анализ</h3>
-                            <p class="text-blue-100 text-sm">Анализ технологических рисков и их правовых последствий</p>
-                        </div>
-                        <div class="bg-white bg-opacity-10 p-4 rounded-xl backdrop-blur-sm animate-on-scroll" style="transition-delay: 0.3s">
-                            <i class="fas fa-brain text-3xl text-gold mb-3"></i>
-                            <h3 class="font-bold text-lg mb-2">Экспертиза ИИ</h3>
-                            <p class="text-blue-100 text-sm">Оценка алгоритмов с точки зрения законодательства</p>
-                        </div>
-                        <div class="bg-white bg-opacity-10 p-4 rounded-xl backdrop-blur-sm animate-on-scroll" style="transition-delay: 0.4s">
-                            <i class="fas fa-lock text-3xl text-gold mb-3"></i>
-                            <h3 class="font-bold text-lg mb-2">Кибербезопасность</h3>
-                            <p class="text-blue-100 text-sm">Консультации по защите цифровых активов</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center animate-on-scroll" style="transition-delay: 0.2s">
-                    <div class="relative">
-                        <div class="relative z-10">
-                            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-2 border border-white border-opacity-20 shadow-2xl">
-                                <div class="bg-gray-800 rounded-xl p-6">
-                                    <div class="flex justify-between items-center mb-6">
-                                        <div class="flex items-center">
-                                            <div class="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
-                                            <div class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
-                                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                                        </div>
-                                        <div class="text-sm">LegalAI Framework</div>
-                                    </div>
-                                    <div class="font-mono text-green-400 text-sm mb-4">
-                                        <span class="text-purple-400">class</span> <span class="text-yellow-400">UzbekistanLaw</span> {<br>
-                                        &nbsp;&nbsp;<span class="text-purple-400">constructor</span>() {<br>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">this</span>.digitalRights = <span class="text-green-400">true</span>;<br>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">this</span>.aiRegulation = <span class="text-green-400">true</span>;<br>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">this</span>.dataProtection = <span class="text-green-400">true</span>;<br>
-                                        &nbsp;&nbsp;}<br><br>
-                                        &nbsp;&nbsp;updateForAI() {<br>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">this</span>.aiFramework = <span class="text-yellow-400">new</span> <span class="text-teal-400">AILegalFramework</span>();<br>
-                                        &nbsp;&nbsp;}<br>
-                                        }
-                                    </div>
-                                    <div class="text-xs text-gray-400">// Разработка правовой базы для ИИ в Узбекистане</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="absolute -top-6 -left-6 w-32 h-32 bg-gold rounded-full opacity-20 animate-pulse"></div>
-                        <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-accent rounded-full opacity-30 animate-pulse" style="animation-delay: 0.5s"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
-                    Свяжитесь с нами
-                </h2>
-                <div class="w-24 h-1 bg-accent mx-auto"></div>
-                <p class="text-xl text-gray-600 mt-6 max-w-2xl mx-auto">
-                    Для консультаций, научного сотрудничества или правового анализа в сфере цифровых технологий и искусственного интеллекта
-                </p>
-            </div>
-            
-            <div class="bg-gradient-to-br from-lightbg to-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto animate-on-scroll">
-                <div class="flex flex-col md:flex-row gap-8">
-                    <div class="md:w-1/2">
-                        <h3 class="text-2xl font-bold text-primary mb-6">Контактная информация</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-map-marker-alt text-white"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-lg text-gray-800">Офис в Намангане</h4>
-                                    <p class="text-gray-600">Наманганская область, Давлатабадский район</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-phone-alt text-white"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-lg text-gray-800">Телефон</h4>
-                                    <p class="text-gray-600">+998 (97) 861-16-26</p>
-                                    <p class="text-gray-600">+998 (91) 234-56-78</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-envelope text-white"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-lg text-gray-800">Email</h4>
-                                    <p class="text-gray-600">sh.tuhtamirzaev@gmail.com</p>
-                                    <p class="text-gray-600">i.nematjonov@legalresearch.uz</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="md:w-1/2">
-                        <form class="space-y-6">
-                            <div>
-                                <label class="block text-gray-700 mb-2">Имя</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                            </div>
-                            
-                            <div>
-                                <label class="block text-gray-700 mb-2">Email</label>
-                                <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                            </div>
-                            
-                            <div>
-                                <label class="block text-gray-700 mb-2">Сообщение</label>
-                                <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
-                            </div>
-                            
-                            <button class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 px-4 rounded-lg transition duration-300">
-                                Отправить сообщение
-                            </button>
-                        </form>
-                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Kiberhuquq</h3>
+                    <p class="text-blue-200">Kiberjinoyatchilik va kiberxavfsizlik masalalari</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-primary text-white py-12">
+    <footer class="bg-primary text-white py-12 relative z-10">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
-                    <h3 class="text-2xl font-heading font-bold">Legal AI Experts</h3>
-                    <p class="text-blue-200 mt-2">Правовые решения для цифровой эпохи</p>
+                    <h3 class="text-2xl font-heading font-bold">Huquqiy AI Ekspertlar</h3>
+                    <p class="text-blue-200 mt-2">Raqamli davr uchun huquqiy yechimlar</p>
                 </div>
                 
                 <div class="flex space-x-6">
-                    <a href="#" class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-accent transition">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
                     <a href="#" class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-accent transition">
                         <i class="fab fa-telegram"></i>
                     </a>
@@ -597,165 +548,135 @@
                     <a href="#" class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-accent transition">
                         <i class="fab fa-twitter"></i>
                     </a>
+                    <a href="#" class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-accent transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
             </div>
             
             <div class="border-t border-blue-800 mt-10 pt-8 text-center text-blue-200">
-                <p>&copy; 2023 Legal AI Experts. Все права защищены.</p>
-                <p class="mt-2">Специалисты в области права и искусственного интеллекта</p>
+                <p>&copy; 2023 Huquqiy AI Ekspertlar. Barcha huquqlar himoyalangan.</p>
+                <p class="mt-2">O'zbekiston Respublikasi, Namangan viloyati</p>
             </div>
         </div>
     </footer>
 
-    <!-- AI Chatbot -->
-    <div class="ai-chatbot fixed bottom-24 right-6 w-80 max-w-full bg-white rounded-xl shadow-2xl border border-gray-200 z-50 overflow-hidden transition-all duration-300 hidden">
-        <div class="bg-primary text-white p-4 flex justify-between items-center">
-            <div class="flex items-center">
-                <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center mr-3">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <h3 class="font-bold">ИИ-Помощник юриста</h3>
-            </div>
-            <button id="close-chat" class="text-white hover:text-gray-200">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="chat-messages p-4 h-64 overflow-y-auto bg-gray-50">
-            <div class="ai-response mb-4 bg-lightbg rounded-lg p-3">
-                <div class="flex items-start">
-                    <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0 mr-2">
-                        <i class="fas fa-robot text-white text-sm"></i>
-                    </div>
-                    <div>
-                        <p>Привет! Я ИИ-помощник по юридическим вопросам. Чем могу помочь?</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="p-4 border-t border-gray-200">
-            <div class="flex">
-                <input type="text" id="chat-input" placeholder="Задайте вопрос о праве..." class="flex-grow px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                <button id="send-btn" class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-r-lg">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- Floating AI Icon -->
-    <div id="ai-icon" class="fixed bottom-6 right-6 w-14 h-14 bg-accent rounded-full flex items-center justify-center text-white cursor-pointer shadow-lg animate-bounce-slow">
+    <div class="fixed bottom-6 right-6 w-14 h-14 bg-accent rounded-full flex items-center justify-center text-white cursor-pointer shadow-lg pulse">
         <i class="fas fa-robot text-2xl"></i>
     </div>
 
     <script>
-        // Анимации при скролле
-        document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
+        // Create neural network background
+        function createNeuralNetwork() {
+            const svg = document.querySelector('.neural-network');
+            const width = 1000;
+            const height = 1000;
             
-            document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                observer.observe(el);
-            });
-            
-            // ИИ-чатбот
-            const aiIcon = document.getElementById('ai-icon');
-            const aiChatbot = document.querySelector('.ai-chatbot');
-            const closeChat = document.getElementById('close-chat');
-            const chatInput = document.getElementById('chat-input');
-            const sendBtn = document.getElementById('send-btn');
-            const chatMessages = document.querySelector('.chat-messages');
-            
-            let chatHistory = [
-                { role: 'ai', content: 'Привет! Я ИИ-помощник по юридическим вопросам. Чем могу помочь?' }
-            ];
-            
-            // Открыть/закрыть чат
-            aiIcon.addEventListener('click', () => {
-                aiChatbot.classList.toggle('hidden');
-            });
-            
-            closeChat.addEventListener('click', () => {
-                aiChatbot.classList.add('hidden');
-            });
-            
-            // Отправка сообщения
-            function sendMessage() {
-                const message = chatInput.value.trim();
-                if (!message) return;
+            // Create neurons
+            const neurons = [];
+            for (let i = 0; i < 30; i++) {
+                const x = Math.random() * width;
+                const y = Math.random() * height;
+                neurons.push({x, y});
                 
-                // Добавление сообщения пользователя
-                const userMessage = document.createElement('div');
-                userMessage.className = 'chat-message mb-4 ml-auto bg-primary text-white rounded-lg p-3';
-                userMessage.innerHTML = `<p>${message}</p>`;
-                chatMessages.appendChild(userMessage);
-                
-                // Добавить в историю
-                chatHistory.push({ role: 'user', content: message });
-                
-                // Очистить поле ввода
-                chatInput.value = '';
-                
-                // Прокрутка вниз
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-                
-                // Ответ ИИ
-                setTimeout(() => {
-                    const aiResponses = [
-                        "В законодательстве Узбекистана по цифровым правам важную роль играет закон 'Об электронном документообороте'.",
-                        "Защита персональных данных регулируется Законом Республики Узбекистан 'О персональных данных'.",
-                        "Правовой статус ИИ в Узбекистане в настоящее время разрабатывается, ожидается принятие специального закона в ближайшие годы.",
-                        "Юридическая ответственность за решения ИИ пока возлагается на оператора системы.",
-                        "Электронные контракты имеют такую же юридическую силу, как и бумажные, при соблюдении требований законодательства."
-                    ];
-                    
-                    const randomResponse = aiResponses[Math.floor(Math.random() * aiResponses.length)];
-                    
-                    const aiMessage = document.createElement('div');
-                    aiMessage.className = 'ai-response mb-4 bg-lightbg rounded-lg p-3';
-                    aiMessage.innerHTML = `
-                        <div class="flex items-start">
-                            <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0 mr-2">
-                                <i class="fas fa-robot text-white text-sm"></i>
-                            </div>
-                            <div>
-                                <p>${randomResponse}</p>
-                            </div>
-                        </div>
-                    `;
-                    chatMessages.appendChild(aiMessage);
-                    
-                    // Добавить в историю
-                    chatHistory.push({ role: 'ai', content: randomResponse });
-                    
-                    // Прокрутка вниз
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }, 1000);
+                const neuron = document.createElement('div');
+                neuron.className = 'neuron';
+                neuron.style.left = `${x}px`;
+                neuron.style.top = `${y}px`;
+                document.body.appendChild(neuron);
             }
             
-            // Отправка по кнопке
-            sendBtn.addEventListener('click', sendMessage);
-            
-            // Отправка по Enter
-            chatInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    sendMessage();
+            // Create connections
+            neurons.forEach((neuron, i) => {
+                for (let j = i + 1; j < neurons.length; j++) {
+                    if (Math.random() > 0.7) {
+                        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                        path.setAttribute('d', `M${neuron.x},${neuron.y} L${neurons[j].x},${neurons[j].y}`);
+                        path.classList.add('neural-path');
+                        path.style.strokeDashoffset = Math.random() * 100;
+                        path.style.animationDuration = `${10 + Math.random() * 20}s`;
+                        svg.appendChild(path);
+                    }
                 }
             });
+        }
+        
+        // Create circuit background
+        function createCircuit() {
+            const svg = document.querySelector('.circuit-bg');
+            const width = 1000;
+            const height = 1000;
             
-            // Плавное появление элементов при загрузке
-            setTimeout(() => {
-                document.querySelectorAll('.animate-on-scroll').forEach((el, index) => {
+            let pathData = '';
+            let x = 100;
+            let y = 100;
+            
+            pathData += `M${x},${y} `;
+            
+            for (let i = 0; i < 50; i++) {
+                const dir = Math.floor(Math.random() * 4);
+                const length = 50 + Math.random() * 100;
+                
+                switch (dir) {
+                    case 0: // right
+                        x += length;
+                        break;
+                    case 1: // down
+                        y += length;
+                        break;
+                    case 2: // left
+                        x -= length;
+                        break;
+                    case 3: // up
+                        y -= length;
+                        break;
+                }
+                
+                // Keep within bounds
+                x = Math.max(50, Math.min(width - 50, x));
+                y = Math.max(50, Math.min(height - 50, y));
+                
+                pathData += `L${x},${y} `;
+            }
+            
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', pathData);
+            path.classList.add('circuit-path');
+            svg.appendChild(path);
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createNeuralNetwork();
+            createCircuit();
+            
+            // Add animation to AI judgment on button click
+            const analyzeBtn = document.querySelector('.bg-gold');
+            const judgmentText = document.querySelector('.ai-judgment p');
+            
+            analyzeBtn.addEventListener('click', function() {
+                judgmentText.innerHTML = "Tahlil bajarilmoqda...";
+                
+                setTimeout(() => {
+                    const judgments = [
+                        "Sizning holatingiz O'zbekiston Respublikasi Fuqarolik kodeksining 402-moddasiga muvofiq hal etilishi mumkin. Ehtimoliy natija: da'voning qondirilishi 75%.",
+                        "Bu holat Jinoyat kodeksining 168-moddasi doirasiga kiradi. Tavsiya: professional huquqiy yordam so'rash.",
+                        "Tahlil shuni ko'rsatdiki, bu mehnat munosabatlariga oid masala. Mehnat kodeksining 65-moddasi asosida hal etish mumkin.",
+                        "Sizning holatingiz raqamli huquq sohasiga kiradi. Elektron hujjatlar va shartnomalarning huquqiy kuchi tasdiqlangan."
+                    ];
+                    
+                    const randomJudgment = judgments[Math.floor(Math.random() * judgments.length)];
+                    judgmentText.innerHTML = randomJudgment;
+                    
+                    // Add animation
+                    const judgmentBox = document.querySelector('.ai-judgment');
+                    judgmentBox.style.animation = 'none';
                     setTimeout(() => {
-                        el.style.opacity = 1;
-                        el.style.transform = 'translateY(0)';
-                    }, 100 * index);
-                });
-            }, 300);
+                        judgmentBox.style.animation = 'pulse 2s';
+                    }, 10);
+                }, 2000);
+            });
         });
     </script>
 </body>
